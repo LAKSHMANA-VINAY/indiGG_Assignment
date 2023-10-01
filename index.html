@@ -1,0 +1,332 @@
+<html>
+    <head>
+        <title>indiGG Quiz</title>
+        <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #076593;
+            margin: 0;
+            padding: 0;
+            justify-content: center;
+            align-items: center;
+            color: #f2f2f2;
+        }
+        .container1 {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            color: black;
+        }
+        .question {
+            display: none;
+            margin-bottom: 20px;
+        }
+        .question p {
+            margin: 0;
+            margin-bottom: 10px;
+        }
+        .options label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .score {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .result-container {
+            display: none;
+            margin-left: 30px;
+        }
+        h1{
+            margin-top: 10px;
+            margin-left: 550px;
+        }
+        .result-container h1{
+            margin-left: 600px;
+        }
+        .score-container{
+            margin-left: 630px;
+        }
+        .feedback-container{
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            color: black;
+        }
+        #score{
+            margin-left: 600px;
+            font-size: 20px;
+        }
+        .restart-button{
+            width: 90px;
+            height: 40px;
+            font-weight: bold;
+            border-radius: 5px;
+            background-color: #2098d3;
+            color: #f2f2f2;
+            margin-left: 200px;
+            cursor: pointer;
+        }
+        .restart-button:hover{
+            background-color: #46baf4;
+        }
+        .timer {
+            font-size: 16px;
+            color: red;
+            margin-top: 10px;
+        }
+        .next-button{
+            width: 90px;
+            height: 40px;
+            font-weight: bold;
+            border-radius: 5px;
+            background-color: #2098d3;
+            color: #f2f2f2;
+            cursor: pointer;
+        }
+        .submit-button{
+            width: 90px;
+            height: 40px;
+            font-weight: bold;
+            border-radius: 5px;
+            background-color: #2098d3;
+            color: #f2f2f2;
+            margin-left: 200px;
+            cursor: pointer;
+        }
+        .next-button:hover{
+            background-color: #46baf4;
+        }
+        .submit-button:hover{
+            background-color: #46baf4;
+        }
+        @media (max-width: 600px) {
+            .container1 {
+                width: 90%;
+                margin: 0 auto;
+            }
+            h1 {
+                margin-left: 10px;
+            }
+            .question p {
+                font-size: 16px;
+            }
+            .options label {
+                font-size: 14px;
+            }
+            .buttons {
+                flex-direction: column;
+                text-align: center; 
+            }
+            .next-button, .submit-button, .restart-button {
+                width: 100%; 
+                margin: 10px 0;
+            }
+            .result-container h1 {
+                margin-left: 10px;
+            }
+            #score {
+                margin-left: 10px;
+                font-size: 18px;
+            }
+            .feedback-container {
+                max-width: 90%; 
+                margin: 0 auto;
+                padding: 10px; 
+            }
+            .timer {
+                margin-top: 5px; /* Reduce margin-top for timers on mobile */
+            }
+        }
+        </style>
+    </head>
+    <body>
+        <h1>indiGG Quiz For FrontEnd</h1>
+        <div class="container1">
+            <div class="question" id="question1">
+                <p>1. What is not valid data type in Javascript?</p>
+                <div class="options">
+                    <label><input type="radio" name="q1" value="a"> Undefined</label>
+                    <label><input type="radio" name="q1" value="b"> Boolean</label>
+                    <label><input type="radio" name="q1" value="c"> float</label>
+                    <label><input type="radio" name="q1" value="d"> Number</label>
+                </div>
+                <div class="timer" id="timer1"></div>
+            </div>
+            <div class="question" id="question2">
+                <p>2. What are the types of Pop up boxes available in Javascript?</p>
+                <div class="options">
+                    <label><input type="radio" name="q2" value="a"> Prompt</label>
+                    <label><input type="radio" name="q2" value="b"> Alert</label>
+                    <label><input type="radio" name="q2" value="c"> Confirm</label>
+                    <label><input type="radio" name="q2" value="d"> All of the Above</label>
+                </div>
+                <div class="timer" id="timer2"></div>
+            </div>
+            <div class="question" id="question3">
+                <p>3. A function definition expression is known as?</p>
+                <div class="options">
+                    <label><input type="radio" name="q3" value="a"> Function calls</label>
+                    <label><input type="radio" name="q3" value="b"> Function definiation</label>
+                    <label><input type="radio" name="q3" value="c"> Function calling</label>
+                    <label><input type="radio" name="q3" value="d"> Function literal</label>
+                </div>
+                <div class="timer" id="timer3"></div>
+            </div>
+            <div class="question" id="question4">
+                <p>4. Which attribute set the text direction?</p>
+                <div class="options">
+                    <label><input type="radio" name="q4" value="a"> dir</label>
+                    <label><input type="radio" name="q4" value="b"> long</label>
+                    <label><input type="radio" name="q4" value="c"> direction</label>
+                    <label><input type="radio" name="q4" value="d"> sub</label>
+                </div>
+                <div class="timer" id="timer4"></div>
+            </div>
+            <div class="question" id="question5">
+                <p>5. Which attribute specifies a unique alphanumeric identifier to be associated with an element?</p>
+                <div class="options">
+                    <label><input type="radio" name="q5" value="a"> class</label>
+                    <label><input type="radio" name="q5" value="b"> id</label>
+                    <label><input type="radio" name="q5" value="c"> article</article></label>
+                    <label><input type="radio" name="q5" value="d"> identifer</label>
+                </div>
+                <div class="timer" id="timer5"></div>
+            </div>
+            <div class="buttons">
+                <button class="next-button" onclick="showQuestion(currentQuestion + 1)">Next</button>
+                <button class="submit-button" onclick="submitQuiz()">Submit</button>
+            </div>
+        </div>
+        <div class="result-container">
+            <h1>Quiz Results</h1>
+            <p id="score"></p>
+            <div class="feedback-container">
+                <h2>Questions and Answers:</h2>
+                <ul id="answers"></ul>
+                <button class="restart-button" onclick="refresh()">Restart</button>
+            </div>
+        </div>
+        <script>
+            let currentQuestion = 1;
+            let quizSubmitted = false;
+            const questions = document.querySelectorAll('.question');
+            const nextButton = document.querySelector('.next-button');
+            const submitButton = document.querySelector('.submit-button');
+            const scoreDisplay = document.querySelector('#score');
+            const resultContainer = document.querySelector('.result-container');
+            const quizContainer = document.querySelector('.container1');
+            const timers = document.querySelectorAll('.timer');
+            const userAnswers = [];
+            const questionTimers = [];
+            
+            function showQuestion(questionNumber) {
+
+                clearTimeoutTimers();
+                
+                questions[currentQuestion - 1].style.display = 'none';
+                currentQuestion = questionNumber;
+
+                if (currentQuestion === questions.length) {
+                    nextButton.style.display = 'none';
+                    submitButton.style.display = 'block';
+                } else {
+                    nextButton.style.display = 'block';
+                    submitButton.style.display = 'none';
+                }
+
+                questions[currentQuestion - 1].style.display = 'block';
+                startTimer(currentQuestion);
+        }
+
+    
+            function submitQuiz()  {
+                if (quizSubmitted) {
+                    return; 
+                }
+                quizSubmitted = true;
+                clearTimeoutTimers(); 
+                let score = 0;
+    
+                questions.forEach((question, index) => {
+                    const selectedOption = question.querySelector('input[type="radio"]:checked');
+                    const correctAnswer = index === 0 ? 'c' : (index === 1 ? 'd' : (index === 2 ? 'd' : (index === 3 ? 'a' : 'b')));
+    
+                    if (selectedOption) {
+                        const value = selectedOption.value;
+                        userAnswers.push(value);
+    
+                        if (value === correctAnswer) {
+                            score++;
+                        }
+                    } else {
+                        userAnswers.push('Not answered');
+                    }
+                });
+    
+                quizContainer.style.display = 'none';
+    
+                scoreDisplay.textContent = `You scored ${score} out of ${questions.length}`;
+    
+                const answersList = document.getElementById('answers');
+                questions.forEach((question, index) => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = `Question ${question.querySelector('p').textContent}`;
+                    const userAnswer = document.createElement('p');
+                    userAnswer.textContent = `Your Answer: ${userAnswers[index]}`;
+                    const correctAnswer = document.createElement('p');
+                    correctAnswer.textContent = `Correct Answer: ${index === 0 ? 'float[c]' : (index === 1 ? 'All of the Above[d]' : (index === 2 ? 'Function literal[d]' : (index === 3 ? 'dir[a]' : 'id[b]')))}`;
+                    listItem.appendChild(userAnswer);
+                    listItem.appendChild(correctAnswer);
+                    answersList.appendChild(listItem);
+                });
+    
+                resultContainer.style.display = 'block';
+            }
+            function refresh(){
+
+                location.reload();
+            }
+            function startTimer(questionNumber) {
+
+                const timer = timers[questionNumber - 1];
+                let timeLeft = 25;
+                timer.textContent = `Time left: ${timeLeft} seconds`;
+
+                const countdown = setInterval(() => {
+                    timeLeft--;
+                    timer.textContent = `Time left: ${timeLeft} seconds`;
+
+                    if (timeLeft <= 0) {
+                        clearTimeout(countdown);
+                        if (currentQuestion < questions.length) {
+                            showQuestion(currentQuestion + 1);
+                        } else {
+                            submitQuiz();
+                        }
+                    }
+                }, 1000);
+
+            questionTimers[questionNumber - 1] = countdown;
+        }
+
+        function clearTimeoutTimers() {
+            questionTimers.forEach((timerId) => {
+                clearInterval(timerId);
+            });
+        }
+        showQuestion(currentQuestion);
+        </script>
+    </body>
+</html>
